@@ -32,3 +32,7 @@ https://movie-review-pro.herokuapp.com/
 `docker exec -it <insert-id> ash`  
 `psql`  
 `create database movies`
+
+# making migrations for dev
+`source development.env`
+`python manage.py db init`
