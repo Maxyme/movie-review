@@ -46,5 +46,7 @@ https://movie-review-pro.herokuapp.com/
 `heroku config --app movie-review-staging`
 - adding a postgres db:  
 `heroku addons:create heroku-postgresql:hobby-dev --app movie-review-staging`
+- adding a redis instance on heroku
+`heroku addons:create redistogo:nano --app movie-review-staging`
 - run the migrations on heroku:  
 `heroku run python manage.py db upgrade --app movie-review-staging`
