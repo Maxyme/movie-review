@@ -6,7 +6,7 @@ import re
 import nltk
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from stop_words import stops
 
@@ -16,18 +16,15 @@ from worker import conn
 
 
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object(os.getenv('APP_SETTINGS', 'config.DevelopmentConfig'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
 q = Queue(connection=conn)
 
-# !: import models after db declaration due to import order
-from models import Result
-
-# sanity check
-print(os.environ['APP_SETTINGS'])
+# !important: import models after db declaration due to import order
+from models import Result  # noqa
 
 
 def count_and_save_words(url):
