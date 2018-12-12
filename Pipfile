@@ -15,6 +15,8 @@ requests = "*"
 beautifulsoup4 = "*"
 nltk = "*"
 psycopg2 = "*"
+redis = "*"
+rq = "*"
 
 [requires]
 python_version = "3.7"
