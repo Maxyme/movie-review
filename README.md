@@ -24,16 +24,10 @@ https://movie-review-pro.herokuapp.com/
 ### run on heroku server
 `heroku run python app.py --app movie-review-staging`
 
-### setting up the local postgres db
-` docker volume create movie-review`  
+### setting up the local postgres db and local redis
 `docker-compose up -d`
-- show the container id, and exec it:  
-`docker ps -a`  
-`docker exec -it <insert-id> ash`  
-`psql`  
-`create database movies`
 
-### making migrations for dev
+### making migrations
 `source development.env`
 `python manage.py db init`
 

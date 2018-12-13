@@ -21,3 +21,8 @@ flake8 = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+server = "cd app && python manage.py runserver"
+worker = "cd app && python manage.py worker"
+migrate = "cd app && python manage.py migrate"
