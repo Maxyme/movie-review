@@ -5,6 +5,9 @@ A simple way to share movie recommendations with friends and family
 https://movie-review-staging.herokuapp.com/
 https://movie-review-pro.herokuapp.com/
 
+## running the backend
+`flask run` and in a separate terminal `python worker.py`
+
 ### setting the correct config
 `export APP_SETTINGS="config.DevelopmentConfig"`  
 `APP_SETTINGS="config.DevelopmentConfig" python app.py`
@@ -28,12 +31,12 @@ https://movie-review-pro.herokuapp.com/
 `docker-compose up -d`
 
 ### making migrations
-`source development.env`
-`python manage.py db init`
+- flask cli will automatically read the .flaskenv file if python-dotnet is installed and add source it.
+`flask db init`
 
 ### make the migrations and migrate into the db
-`python manage.py db migrate`
-`python manage.py db upgrade`
+`flask db migrate`
+`flask db upgrade`
 
 ### heroku
 - checking the config (env variables):  
