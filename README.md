@@ -6,15 +6,8 @@ https://movie-review-staging.herokuapp.com/
 https://movie-review-pro.herokuapp.com/
 
 ## running the backend
-`flask run` and in a separate terminal `python worker.py`
-
-### setting the correct config
-`export APP_SETTINGS="config.DevelopmentConfig"`  
-`APP_SETTINGS="config.DevelopmentConfig" python app.py`
-
-- on heroku, with heroku toolbelt cli:  
-`heroku config:set APP_SETTINGS=config.StagingConfig --remote staging`  
-`heroku config:set APP_SETTINGS=config.ProductionConfig --remote pro`  
+- run `flask run` and in a separate terminal `dotenv run python worker.py`.
+- the environment variables from .env will be sourced automatically by flask-cli and dotenv.
 
 ### setting up heroku (do twice for staging)
 `heroku create movie-review-pro`  
@@ -38,7 +31,7 @@ https://movie-review-pro.herokuapp.com/
 `flask db migrate`
 `flask db upgrade`
 
-### heroku
+### Heroku (tips)
 - checking the config (env variables):  
 `heroku config --app movie-review-staging`
 - adding a postgres db:  
@@ -49,4 +42,7 @@ https://movie-review-pro.herokuapp.com/
 `heroku run python manage.py db upgrade --app movie-review-staging`
 - run locally with environment file (loads the heroku.sh file)
 `heroku local -e development.env`
+- setting environment variables on heroky, with heroku toolbelt cli: 
+`heroku config:set DEBUG=True --remote staging`  
+`heroku config:set DEBUG=False --remote pro`  
 

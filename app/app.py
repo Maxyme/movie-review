@@ -16,7 +16,6 @@ def create_app(**config_overrides):
 
     # Load config
     app.config.from_pyfile('settings.py')
-    #app.config.from_object(os.getenv('APP_SETTINGS', 'config.DevelopmentConfig'))
 
     # apply overrides for tests
     app.config.update(config_overrides)
