@@ -5,7 +5,7 @@ import nltk
 from bs4 import BeautifulSoup
 
 from stop_words import stops
-NLKT_PATH = os.path.abspath(os.path.join(os.path.curdir, 'nltk_data'))
+NLKT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, 'nltk_data'))
 
 
 def count_words(text):
