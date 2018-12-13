@@ -18,6 +18,7 @@ psycopg2 = "*"
 redis = "*"
 rq = "*"
 flake8 = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"

@@ -8,12 +8,12 @@
       function ($scope, $log, $http, $timeout) {
         $scope.submitButtonText = 'Submit';
         $scope.loading = false;
-        $scope.urlerror = false;
-
+        $scope.error_processing = false;
+        $scope.error_message = '';
         $scope.getResults = function () {
-
+          $scope.error_processing = false;
+          $scope.error_message = '';
           $log.log("test");
-
           // get the URL from the input
           var userInput = $scope.url;
 
@@ -49,7 +49,7 @@
                 $scope.loading = false;
                 $scope.submitButtonText = "Submit";
                 $scope.wordcounts = data;
-                $scope.url_error = false;
+                $scope.error_processing = false;
                 $timeout.cancel(timeout);
                 return false;
               }
@@ -61,7 +61,8 @@
               $log.log(error);
               $scope.loading = false;
               $scope.submitButtonText = "Submit";
-              $scope.url_error = true;
+              $scope.error_processing = true;
+              $scope.error_message = error
             });
           };
           poller();

@@ -1,26 +1,28 @@
+import json
 import operator
 
 import requests
+from flask import Blueprint
 from flask import render_template, request
-
-import json
-
 from rq.job import Job
 
-from app import q, app, db
+from app import q, db, create_app
 from models import Result
-
 from utilities.count_words import count_words
 from worker import conn
 
+simple_app = Blueprint('simple_app', __name__)
+app = create_app()
+app.app_context().push()
 
-@app.route('/index')
-@app.route('/', methods=['GET', 'POST'])
+
+@simple_app.route('/index')
+@simple_app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/start', methods=['POST'])
+@simple_app.route('/start', methods=['POST'])
 def get_counts():
     # get url
     data = json.loads(request.data.decode())
@@ -33,17 +35,19 @@ def get_counts():
     return job.get_id()
 
 
-@app.route("/results/<job_key>", methods=['GET'])
+@simple_app.route("/results/<job_key>", methods=['GET'])
 def get_results(job_key):
-
     job = Job.fetch(job_key, connection=conn)
+
+    if type(job.result) is dict and job.result.get("error") is not None:
+        return job.result.get("error"), 403
 
     if job.is_finished:
         result = Result.query.filter_by(id=job.result).first()
         results = sorted(result.result_no_stop_words.items(), key=operator.itemgetter(1), reverse=True)[:10]
         return json.dumps(dict(results))
     else:
-        return "Not ready yet!", 202
+        return "Job not finished yet!", 202
 
 
 def count_and_save_words(url):
@@ -60,6 +64,6 @@ def count_and_save_words(url):
         db.session.add(result)
         db.session.commit()
     except:
-        return {"error": "Unable to add item to database."}
+        return {"error": "Unable to add item to database."}, 403
 
     return result.id
