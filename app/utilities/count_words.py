@@ -1,15 +1,17 @@
+import os
 import re
 
 import nltk
 from bs4 import BeautifulSoup
 
 from stop_words import stops
+NLKT_PATH = os.path.join(os.path.curdir, 'app/nltk_data/')
 
 
 def count_words(text):
     # text processing
     raw = BeautifulSoup(text).get_text()
-    nltk.data.path.append('./app/nltk_data/')  # set the path
+    nltk.data.path.append(NLKT_PATH)
     tokens = nltk.word_tokenize(raw)
     text = nltk.Text(tokens)
 
