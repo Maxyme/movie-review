@@ -14,4 +14,4 @@ db = SQLAlchemy(app)
 
 q = Queue(connection=conn)
 
-from routes import *
+from routes import *  # noqa routes need to be imported for flask.

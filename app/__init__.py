@@ -1,2 +1,2 @@
 """Flask app init"""
-from .app import app, db, q
+from .app import app, db, q  # noqa
