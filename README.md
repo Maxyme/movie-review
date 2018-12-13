@@ -41,7 +41,7 @@ https://movie-review-pro.herokuapp.com/
 - run the migrations on heroku:  
 `heroku run python manage.py db upgrade --app movie-review-staging`
 - run locally with environment file (loads the heroku.sh file)
-`heroku local -e development.env`
+`heroku local -e .env`
 - setting environment variables on heroky, with heroku toolbelt cli: 
 `heroku config:set DEBUG=True --remote staging`  
 `heroku config:set DEBUG=False --remote pro`  

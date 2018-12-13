@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 cd app
-gunicorn app:app --daemon
+gunicorn "app:create_app()" --daemon
 python worker.py
