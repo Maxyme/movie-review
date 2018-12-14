@@ -1,8 +1,7 @@
-import spacy
+from functools import lru_cache
+import en_core_web_sm
 from bs4 import BeautifulSoup
 from bs4.element import Comment
-from functools import lru_cache
-
 
 from stop_words import stops
 
@@ -10,8 +9,8 @@ from stop_words import stops
 @lru_cache(maxsize=32)
 def spacy_count_entities(text):
     # Load English tokenizer, tagger, parser, NER and word vectors - this can come from
-    # import en_core_web_sm; nlp = en_core_web_sm.load()
-    nlp = spacy.load('en')  # dynamic loading!
+    # nlp = spacy.load('en')  # dynamic loading!, but linking needs to happen on heroku
+    nlp = en_core_web_sm.load()
     doc = nlp(text)
 
     collected_entities = [str(w) for w in doc.ents if str(w) not in stops]
