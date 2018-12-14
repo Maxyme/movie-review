@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 cd app
-hypercorn "app:create_app()"
+hypercorn -b 127.0.0.1:${PORT} "app:create_app()"
