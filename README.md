@@ -6,7 +6,7 @@ https://movie-review-staging.herokuapp.com/
 https://movie-review-pro.herokuapp.com/
 
 ## running the backend
-- run `flask run` and in a separate terminal `dotenv run python worker.py`.
+- run `dotenv run quart run` and in a separate terminal `dotenv run python worker.py`.
 - the environment variables from .env will be sourced automatically by flask-cli and dotenv.
 
 ### setting up heroku (do twice for staging)

@@ -1,17 +1,12 @@
-from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from rq import Queue
-
-from worker import conn
+from quart import Quart
 
 db = SQLAlchemy()
-q = Queue(connection=conn)
 
 
 def create_app(**config_overrides):
-    app = Flask(__name__)
-
+    app = Quart(__name__)
     # Load config
     app.config.from_pyfile('settings.py')
 

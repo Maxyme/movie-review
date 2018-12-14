@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
 cd app
-gunicorn "app:create_app()" --daemon
-python worker.py
+hypercorn -b 127.0.0.1:8000 "app:create_app()"
