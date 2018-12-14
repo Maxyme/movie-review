@@ -8,7 +8,7 @@ from quart import render_template, request
 
 from app import db, create_app
 from models import Result
-from utilities.count_words import count_words
+from utilities.count_words import count_words, get_visible_text, spacy_count_entities
 
 simple_app = Blueprint('simple_app', __name__)
 app = create_app()
@@ -38,10 +38,11 @@ async def count_and_save_words(url):
     except:
         return {"error": "Unable to get URL. Please make sure it's valid and try again."}
 
-    raw_word_count, no_stop_words_count = count_words(r.text)
+    text = get_visible_text(r.text)
+    raw_word_counter, collected_counter = spacy_count_entities(text)
 
     # save the results - just for show, much faster to return directly, maybe make a new route?
-    result = Result(url=url, result_all=raw_word_count, result_no_stop_words=no_stop_words_count)
+    result = Result(url=url, result_all=raw_word_counter, result_no_stop_words=collected_counter)
     async with app.app_context():
         db = SQLAlchemy(app)
         try:
@@ -50,4 +51,5 @@ async def count_and_save_words(url):
         except:
             return {"error": "Unable to add item to database."}, 403
 
-    return json.dumps(dict(sorted(no_stop_words_count.items(), key=operator.itemgetter(1), reverse=True)[:10]))
+    result = dict(sorted(raw_word_counter.items(), key=operator.itemgetter(1), reverse=True)[:10])
+    return json.dumps(result)

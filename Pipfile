@@ -3,8 +3,6 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
-[dev-packages]
-
 [packages]
 flask = "*"
 gunicorn = "*"
@@ -12,19 +10,24 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 requests = "*"
 beautifulsoup4 = "*"
-nltk = "*"
 psycopg2 = "*"
-flake8 = "*"
-python-dotenv = {extras = ["cli"],version = "*"}
 quart = "*"
-hypercorn = "*"
+hypercorn = {extras = ["uvloop"],version = "*"}
+spacy = "*"
+en-core-web-sm = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz"}
+
+[dev-packages]
+python-dotenv = {extras = ["cli"],version = "*"}
+flake8 = "*"
+
+[test-packages]
+pytest = "*"
 
 [requires]
 python_version = "3.7"
 
 [scripts]
 server = "cd app && flask run"
-worker = "python app/worker.py"
 initdb = "cd app && python flask initdb"
 migrate = "cd app && python flask migrate"
-upgrade = "python app/worker.py"
+upgrade = "cd app && python flask upgrade"

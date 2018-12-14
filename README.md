@@ -5,6 +5,10 @@ A simple way to share movie recommendations with friends and family
 https://movie-review-staging.herokuapp.com/
 https://movie-review-pro.herokuapp.com/
 
+## setting up a dev environment:
+- `pipenv install --dev`
+- `pipenv install --test`
+
 ## running the backend
 - run `dotenv run quart run` and in a separate terminal `dotenv run python worker.py`.
 - the environment variables from .env will be sourced automatically by flask-cli and dotenv.
@@ -30,6 +34,10 @@ https://movie-review-pro.herokuapp.com/
 - making the migrations and upgrading the db
 `flask db migrate`
 `flask db upgrade`
+
+### Spacy:
+- installing a package:
+`python -m spacy download en`
 
 ### Heroku (tips)
 - checking the config (env variables):  

@@ -1,27 +1,46 @@
-import os
-import re
-
-import nltk
+import spacy
 from bs4 import BeautifulSoup
+from bs4.element import Comment
 
 from stop_words import stops
-NLKT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, 'nltk_data'))
 
 
-def count_words(text):
-    # text processing
-    raw = BeautifulSoup(text).get_text()
-    nltk.data.path.append(NLKT_PATH)
-    tokens = nltk.word_tokenize(raw)
-    text = nltk.Text(tokens)
+def spacy_count_entities(text):
+    # Load English tokenizer, tagger, parser, NER and word vectors - this can come from
+    # import en_core_web_sm; nlp = en_core_web_sm.load()
+    nlp = spacy.load('en')  # dynamic loading!
+    doc = nlp(text)
 
-    # remove punctuation, count raw words
-    non_punct = re.compile('.*[A-Za-z].*')
-    raw_words = [w for w in text if non_punct.match(w)]
-    raw_word_count = nltk.Counter(raw_words)
+    collected_entities = [str(w) for w in doc.ents if str(w) not in stops]
+    from collections import Counter
+    collected_counter = Counter(collected_entities)
 
-    # stop words
-    no_stop_words = [w for w in raw_words if w.lower() not in stops]
-    no_stop_words_count = nltk.Counter(no_stop_words)
+    filtered_entities = [str(entity) for entity in doc.ents if str(entity) not in stops]
+    from collections import Counter
+    filtered_word_counter = Counter(filtered_entities)
 
-    return raw_word_count, no_stop_words_count
+    return filtered_word_counter, collected_counter
+
+
+def tag_visible(element):
+    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+        return False
+    if isinstance(element, Comment):
+        return False
+    return True
+
+
+def text_from_html(body):
+    soup = BeautifulSoup(body, 'html.parser')
+    texts = soup.findAll(text=True)
+    visible_texts = filter(tag_visible, texts)
+    return u" ".join(t.strip() for t in visible_texts)
+
+
+if __name__ == '__main__':
+    # debug spacy count
+    import requests
+    url = "http://nytimes.com"
+    r = requests.get(url)
+    text = text_from_html(r.text)
+    counter = spacy_count_entities(text)

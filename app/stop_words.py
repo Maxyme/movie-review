@@ -17,3 +17,4 @@ stops = [
     'function', 'js', 'd', 'script', '\'script', 'fjs', 'document', 'r',
     'b', 'g', 'e', '\'s', 'c', 'f', 'h', 'l', 'k'
 ]
+
