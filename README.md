@@ -20,14 +20,13 @@ https://movie-review-pro.herokuapp.com/
 ### run on heroku server
 `heroku run python app.py --app movie-review-staging`
 
-### setting up the local postgres db and local redis
+### Starting the local postgres db
 `docker-compose up -d`
 
-### making migrations
+### Migrations and database
 - flask cli will automatically read the .flaskenv file if python-dotnet is installed and add source it.
 `flask db init`
-
-### make the migrations and migrate into the db
+- making the migrations and upgrading the db
 `flask db migrate`
 `flask db upgrade`
 
