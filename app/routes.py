@@ -1,12 +1,12 @@
 import json
 import operator
-
+from urllib.parse import urlparse
 import requests
 from quart import Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from quart import render_template, request
 
-from app import db, create_app
+from app import create_app
 from models import Result
 from utilities.count_words import spacy_count_entities, text_from_html
 
@@ -23,10 +23,11 @@ async def index():
 @simple_app.route('/start', methods=['POST'])
 async def get_counts():
     # get url
-    data = (await request.data)
-    data = json.loads(data.decode())
-    url = data["url"]
-    if 'http://' not in url[:7]:
+    json_data = await request.get_json()
+    url = json_data["url"]
+
+    parsed_url = urlparse(url)
+    if parsed_url.scheme is "":
         url = 'http://' + url
 
     return await count_and_save_words(url)
