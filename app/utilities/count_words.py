@@ -1,10 +1,13 @@
 import spacy
 from bs4 import BeautifulSoup
 from bs4.element import Comment
+from functools import lru_cache
+
 
 from stop_words import stops
 
 
+@lru_cache(maxsize=32)
 def spacy_count_entities(text):
     # Load English tokenizer, tagger, parser, NER and word vectors - this can come from
     # import en_core_web_sm; nlp = en_core_web_sm.load()
@@ -30,6 +33,7 @@ def tag_visible(element):
     return True
 
 
+@lru_cache(maxsize=32)
 def text_from_html(body):
     soup = BeautifulSoup(body, 'html.parser')
     texts = soup.findAll(text=True)

@@ -8,7 +8,7 @@ from quart import render_template, request
 
 from app import db, create_app
 from models import Result
-from utilities.count_words import count_words, get_visible_text, spacy_count_entities
+from utilities.count_words import spacy_count_entities, text_from_html
 
 simple_app = Blueprint('simple_app', __name__)
 app = create_app()
@@ -38,7 +38,7 @@ async def count_and_save_words(url):
     except:
         return {"error": "Unable to get URL. Please make sure it's valid and try again."}
 
-    text = get_visible_text(r.text)
+    text = text_from_html(r.text)
     raw_word_counter, collected_counter = spacy_count_entities(text)
 
     # save the results - just for show, much faster to return directly, maybe make a new route?
