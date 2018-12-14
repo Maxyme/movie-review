@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -17,14 +15,12 @@ def create_app(**config_overrides):
     # Load config
     app.config.from_pyfile('settings.py')
 
-    # apply overrides for tests
+    # apply overrides (if applicable)
     app.config.update(config_overrides)
 
     # initialize db
     db.init_app(app)
-    # db.create_all()  ## ?
-
-    migrate = Migrate(app, db)
+    Migrate(app, db)
 
     # import and register blueprints
     from routes import simple_app
