@@ -1,4 +1,3 @@
-from functools import lru_cache
 import en_core_web_sm
 from bs4 import BeautifulSoup
 from bs4.element import Comment
@@ -6,7 +5,12 @@ from bs4.element import Comment
 from stop_words import stops
 
 
-@lru_cache(maxsize=32)
+def count_ents(text):
+    text = text_from_html(text)
+    raw_word_counter, collected_counter = spacy_count_entities(text)
+    return raw_word_counter, collected_counter
+
+
 def spacy_count_entities(text):
     # Load English tokenizer, tagger, parser, NER and word vectors - this can come from
     # nlp = spacy.load('en')  # dynamic loading!, but linking needs to happen on heroku
@@ -32,7 +36,6 @@ def tag_visible(element):
     return True
 
 
-@lru_cache(maxsize=32)
 def text_from_html(body):
     soup = BeautifulSoup(body, 'html.parser')
     texts = soup.findAll(text=True)
@@ -41,7 +44,7 @@ def text_from_html(body):
 
 
 if __name__ == '__main__':
-    # debug spacy count
+    # debug
     import requests
     url = "http://nytimes.com"
     r = requests.get(url)

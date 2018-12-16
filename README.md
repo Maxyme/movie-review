@@ -6,8 +6,8 @@ https://movie-review-staging.herokuapp.com/
 https://movie-review-pro.herokuapp.com/
 
 ## setting up a dev environment:
-- `pipenv install --dev`
-- `pipenv install --test`
+- install dev packages: `pipenv install --dev`
+- install test packages: `pipenv install --test`
 
 ## running the backend
 - run `dotenv run quart run` and in a separate terminal `dotenv run python worker.py`.
@@ -44,8 +44,10 @@ https://movie-review-pro.herokuapp.com/
 `heroku config --app movie-review-staging`
 - adding a postgres db:  
 `heroku addons:create heroku-postgresql:hobby-dev --app movie-review-staging`
-- adding a redis instance on heroku
+- adding a redis instance:
 `heroku addons:create redistogo:nano --app movie-review-staging`
+- adding a memcache:
+`heroku addons:create memcachier:dev --app movie-review-staging`
 - run the migrations on heroku:  
 `heroku run python manage.py db upgrade --app movie-review-staging`
 - run locally with environment file (loads the heroku.sh file)
