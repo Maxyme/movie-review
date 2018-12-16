@@ -53,4 +53,5 @@ https://movie-review-pro.herokuapp.com/
 - setting environment variables on heroky, with heroku toolbelt cli: 
 `heroku config:set DEBUG=True --remote staging`  
 `heroku config:set DEBUG=False --remote pro`  
-
+- check the number of free hours for the app:
+`heroku ps -a movie-review-staging`
