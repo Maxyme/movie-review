@@ -1,7 +1,5 @@
-import asyncio
 import json
 import operator
-import uvloop
 from asyncio import get_event_loop
 from urllib.parse import urlparse
 
