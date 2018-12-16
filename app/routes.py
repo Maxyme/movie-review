@@ -1,10 +1,12 @@
+import asyncio
 import json
 import operator
+import uvloop
 from asyncio import get_event_loop
 from urllib.parse import urlparse
 
 import aiohttp
-from async_lru import alru_cache
+from aiocache import cached
 from gino import Gino
 from quart import Blueprint, websocket
 from quart import render_template, request
@@ -44,20 +46,23 @@ async def get_counts():
     return json.dumps(return_data)
 
 
-@alru_cache(maxsize=32)
+@cached(ttl=600)
 async def ents_from_url(url):
     # todo: it would be great to replace this with asks and pass the quart loop
+    # response = await asks.get(url)
+
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url) as s:
-                r = await s.read()
+                response = await s.read()
         except aiohttp.ClientError as error:
             return {"error": f"Unable to get URL: {error}"}
 
-    html = r.decode()
+    html = response.decode()
 
     # todo: can this be the quart event loop? what happens with trio or uvloop??
     loop = get_event_loop()
+    print(loop)
     raw_word_counter, collected_counter = await loop.run_in_executor(None, count_ents, html)
 
     return raw_word_counter, collected_counter

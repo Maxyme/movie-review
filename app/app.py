@@ -2,6 +2,7 @@ from flask_migrate import Migrate
 from gino.ext.quart import Gino
 from quart import Quart
 
+
 app = Quart(__name__)
 # Load config
 app.config.from_pyfile('settings.py')

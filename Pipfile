@@ -19,8 +19,8 @@ redis = "*"
 asks = "*"
 trio = "*"
 curio = "*"
-async-lru = "*"
 aiohttp = "*"
+aiocache = "*"
 
 [dev-packages]
 python-dotenv = {extras = ["cli"],version = "*"}
