@@ -1,3 +1,5 @@
+from collections import Counter
+
 import en_core_web_sm
 from bs4 import BeautifulSoup
 from bs4.element import Comment
@@ -18,21 +20,16 @@ def spacy_count_entities(text):
     doc = nlp(text)
 
     collected_entities = [str(w) for w in doc.ents if str(w) not in stops]
-    from collections import Counter
-    collected_counter = Counter(collected_entities)
-
     filtered_entities = [str(entity) for entity in doc.ents if str(entity) not in stops]
-    from collections import Counter
-    filtered_word_counter = Counter(filtered_entities)
 
-    return filtered_word_counter, collected_counter
+    return Counter(filtered_entities), Counter(collected_entities)
 
 
 def tag_visible(element):
-    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+    if isinstance(element, Comment) \
+            or element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
         return False
-    if isinstance(element, Comment):
-        return False
+
     return True
 
 
@@ -46,6 +43,7 @@ def text_from_html(body):
 if __name__ == '__main__':
     # debug
     import requests
+
     url = "http://nytimes.com"
     r = requests.get(url)
     text = text_from_html(r.text)

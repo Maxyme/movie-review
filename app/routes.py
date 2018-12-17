@@ -1,3 +1,4 @@
+import concurrent
 import json
 import operator
 from asyncio import get_event_loop
@@ -58,10 +59,12 @@ async def ents_from_url(url):
 
     html = response.decode()
 
-    # todo: can this be the quart event loop? what happens with trio or uvloop??
+    # Note, this works for hyperloop with asyncio or uvloop worker but not trio
     loop = get_event_loop()
-    print(loop)
-    raw_word_counter, collected_counter = await loop.run_in_executor(None, count_ents, html)
+
+    # Run cpu heavy work in a thread pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+        raw_word_counter, collected_counter = await loop.run_in_executor(pool, count_ents, html)
 
     return raw_word_counter, collected_counter
 
