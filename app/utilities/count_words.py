@@ -4,7 +4,7 @@ import en_core_web_sm
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 
-from stop_words import stops
+from utilities.stop_words import stops
 
 
 def count_ents(text):

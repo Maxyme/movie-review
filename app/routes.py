@@ -9,7 +9,7 @@ from aiocache import cached
 from gino import Gino
 from quart import Blueprint, websocket
 from quart import render_template, request
-from quart_cors import route_cors, cors
+from quart_cors import cors
 
 from app import app
 from models import Result
@@ -32,7 +32,6 @@ async def index():
 async def get_counts():
     json_data = await request.get_json()
     url = json_data["url"]
-    print(url)
 
     parsed_url = urlparse(url)
     if parsed_url.scheme is "":

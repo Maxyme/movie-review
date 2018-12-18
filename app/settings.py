@@ -11,3 +11,5 @@ DB_PASSWORD = db_conn.password
 
 DB_DATABASE = db_conn.path.replace('/', '')
 CSRF_ENABLED = True
+
+QUART_CORS_ALLOW_ORIGIN = os.getenv('CORS_ALLOW_ORIGIN', ['http://localhost:3000'])
