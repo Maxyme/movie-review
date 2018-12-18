@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9909d0f26ac014f67febaab299566320ff8fa996f12c51d62ebe78d6dd76e437"
+            "sha256": "8ec9179bc07295af4b40db9e5ba9a76fd4b1d796b3bcb21414e24e4215e7cade"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -573,11 +573,19 @@
         },
         "quart": {
             "hashes": [
-                "sha256:b0a54a5c4dc84549f7fd36dde59f98b87e10d201bc6bd03717ed705327d42900",
-                "sha256:c9756aa09f0f981f41eaa3eb7f661b1c4cd2a9f6d6600382ba6b5d2a196d5d65"
+                "sha256:27bbfe09e388333c8e11bb4720ad3745f1b703c5ec8f961044a98bffb572ea4e",
+                "sha256:a197689aa1f898f23e84240f25bf15426a5edce8981d43b4eabc97feb1b39ae9"
             ],
             "index": "pypi",
-            "version": "==0.6.11"
+            "version": "==0.7.0"
+        },
+        "quart-cors": {
+            "hashes": [
+                "sha256:29d6e42d0ccec6a5b9d1c5b2dcb80d5e93efac740fe6cf5ff1b891ef67a36928",
+                "sha256:605d4239ab89c216c87165653cbd5405f508e68674ef133a40176ce464ef52c7"
+            ],
+            "index": "pypi",
+            "version": "==0.1.1"
         },
         "redis": {
             "hashes": [

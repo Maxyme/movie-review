@@ -9,12 +9,14 @@ from aiocache import cached
 from gino import Gino
 from quart import Blueprint, websocket
 from quart import render_template, request
+from quart_cors import route_cors, cors
 
 from app import app
 from models import Result
 from utilities.count_words import count_ents
 
 simple_app = Blueprint('simple_app', __name__)
+simple_app = cors(simple_app)
 
 app = app
 db = Gino(app)
@@ -26,11 +28,11 @@ async def index():
     return await render_template('index.html')
 
 
-@simple_app.route('/start', methods=['POST'])
+@simple_app.route('/getcounts', methods=['POST'])
 async def get_counts():
-    # get url
     json_data = await request.get_json()
     url = json_data["url"]
+    print(url)
 
     parsed_url = urlparse(url)
     if parsed_url.scheme is "":

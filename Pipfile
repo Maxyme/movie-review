@@ -21,6 +21,7 @@ trio = "*"
 curio = "*"
 aiohttp = "*"
 aiocache = "*"
+quart-cors = "*"
 
 [dev-packages]
 python-dotenv = {extras = ["cli"],version = "*"}

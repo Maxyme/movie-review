@@ -17,7 +17,7 @@
           $scope.wordcounts = null;
           $scope.submitButtonText = 'Loading...';
           // get the URL from the input and fire the API request
-          $http.post('/start', {
+          $http.post('/getcounts', {
             "url": $scope.url
           }).
           success(function (results) {
