@@ -38,10 +38,12 @@ async def get_counts():
         url = 'http://' + url
 
     entities = await ents_from_url(url)
-    #data = {'a': 4, 'b': 1, 'e': 1}
-    entities = [{'name': str(key), 'count': value} for key, value in entities.items()]
+
+    top_10_entities = entities.most_common(10)
+    top_10_entities = [{'name': str(key), 'count': value} for key, value in top_10_entities]
     # save the results - just for show, much faster to return directly, maybe make a new route?
-    result = await Result.create(url=url, entities=entities)
+    result = await Result.create(url=url, entities=top_10_entities)
+
     return json.dumps(entities)
 
 

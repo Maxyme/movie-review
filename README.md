@@ -38,11 +38,11 @@ https://movie-review-pro.herokuapp.com/
 
 ### Migrations and database
 
-- flask cli will automatically read the .flaskenv file if python-dotnet is installed and add source it.
-`dotenv run flask db init`
+- flask cli will automatically read the .env file if python-dotnet is installed and add source it.
+`flask db init`
 - making the migrations and upgrading the db
-`dotenv run flask db migrate`
-`dotenv run flask db upgrade`
+`flask db migrate`
+`flask db upgrade`
 
 ### Spacy:
 
@@ -60,7 +60,7 @@ https://movie-review-pro.herokuapp.com/
 - adding a memcache:
 `heroku addons:create memcachier:dev --app movie-review-staging`
 - run the migrations on heroku:  
-`heroku run python manage.py db upgrade --app movie-review-staging`
+`heroku run "cd app && flask db upgrade" --app movie-review-staging`
 - run locally with environment file (loads the heroku.sh file)
 `heroku local -e .env`
 - setting environment variables on heroky, with heroku toolbelt cli: 
@@ -68,3 +68,7 @@ https://movie-review-pro.herokuapp.com/
 `heroku config:set DEBUG=False --remote pro`  
 - check the number of free hours for the app:
 `heroku ps -a movie-review-staging`
+- start psql:
+`heroku pg:psql --app movie-review-staging`
+- get db info:
+`heroku pg:info --app movie-review-staging`

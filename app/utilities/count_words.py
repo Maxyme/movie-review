@@ -19,7 +19,7 @@ def count_ents(text):
 def spacy_count_entities(text):
     doc = nlp(text)
     entities = doc.ents
-    return Counter(entities)
+    return Counter([key.string for key in entities])
 
 
 def tag_visible(element):
