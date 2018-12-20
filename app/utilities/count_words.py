@@ -4,25 +4,22 @@ import en_core_web_sm
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 
-from utilities.stop_words import stops
+# Load English tokenizer, tagger, parser, NER and word vectors - this can come from
+# nlp = spacy.load('en')  # dynamic loading!, but linking needs to happen on heroku
+# this takes a bit to load, so it's better to have it outside of the function
+nlp = en_core_web_sm.load()
 
 
 def count_ents(text):
     text = text_from_html(text)
-    raw_word_counter, collected_counter = spacy_count_entities(text)
-    return raw_word_counter, collected_counter
+    entities = spacy_count_entities(text)
+    return entities
 
 
 def spacy_count_entities(text):
-    # Load English tokenizer, tagger, parser, NER and word vectors - this can come from
-    # nlp = spacy.load('en')  # dynamic loading!, but linking needs to happen on heroku
-    nlp = en_core_web_sm.load()
     doc = nlp(text)
-
-    collected_entities = [str(w) for w in doc.ents if str(w) not in stops]
-    filtered_entities = [str(entity) for entity in doc.ents if str(entity) not in stops]
-
-    return Counter(filtered_entities), Counter(collected_entities)
+    entities = doc.ents
+    return Counter(entities)
 
 
 def tag_visible(element):

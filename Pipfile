@@ -17,11 +17,11 @@ en-core-web-sm = {file = "https://github.com/explosion/spacy-models/releases/dow
 gino = "*"
 redis = "*"
 asks = "*"
-trio = "*"
 curio = "*"
 aiohttp = "*"
 aiocache = "*"
 quart-cors = "*"
+quart-trio = "*"
 
 [dev-packages]
 python-dotenv = {extras = ["cli"],version = "*"}

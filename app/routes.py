@@ -37,18 +37,18 @@ async def get_counts():
     if parsed_url.scheme is "":
         url = 'http://' + url
 
-    raw_word_counter, collected_counter = await ents_from_url(url)
-
+    entities = await ents_from_url(url)
+    #data = {'a': 4, 'b': 1, 'e': 1}
+    entities = [{'name': str(key), 'count': value} for key, value in entities.items()]
     # save the results - just for show, much faster to return directly, maybe make a new route?
-    result = await Result.create(url=url, result_all=raw_word_counter, result_no_stop_words=collected_counter)
-
-    return_data = dict(sorted(raw_word_counter.items(), key=operator.itemgetter(1), reverse=True)[:10])
-    return json.dumps(return_data)
+    result = await Result.create(url=url, entities=entities)
+    return json.dumps(entities)
 
 
 @cached(ttl=600)
 async def ents_from_url(url):
-    # todo: it would be great to replace this with asks and pass the quart loop
+    # todo: it would be great to replace this with asks and pass the quart loop.
+    # Update, it works with quart-trio, but not gino, which relies on asyncio...
     # response = await asks.get(url)
 
     async with aiohttp.ClientSession() as session:
@@ -65,9 +65,9 @@ async def ents_from_url(url):
 
     # Run cpu heavy work in a thread pool:
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        raw_word_counter, collected_counter = await loop.run_in_executor(pool, count_ents, html)
+        entities = await loop.run_in_executor(pool, count_ents, html)
 
-    return raw_word_counter, collected_counter
+    return entities
 
 
 @app.websocket('/ws')

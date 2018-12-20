@@ -1,6 +1,11 @@
+from flask_sqlalchemy import SQLAlchemy
 from gino.dialects.asyncpg import JSONB
 
-from app import db
+try:
+    from app import db
+except ImportError:
+    # this is to allow migrations to work when using manage.py
+    db = SQLAlchemy()
 
 
 class Result(db.Model):
@@ -8,5 +13,4 @@ class Result(db.Model):
 
     id = db.Column(db.BigInteger(), primary_key=True)
     url = db.Column(db.String(), nullable=False)
-    result_all = db.Column(JSONB())
-    result_no_stop_words = db.Column(JSONB())
+    entities = db.Column(JSONB())

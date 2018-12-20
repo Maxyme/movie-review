@@ -14,7 +14,8 @@ https://movie-review-pro.herokuapp.com/
 
 ## running the backend
 
-- run `dotenv run quart run` and in a separate terminal `dotenv run python worker.py`.
+- run: `pipenv shell`
+- run: `dotenv run quart run` and in a separate terminal `dotenv run python worker.py`.
 - the environment variables from .env will be sourced automatically by flask-cli and dotenv.
 - Hypercorn can also be used: `dotenv run hypercorn -b 127.0.0.1:${PORT} "app:create_app()"`
 
@@ -38,10 +39,10 @@ https://movie-review-pro.herokuapp.com/
 ### Migrations and database
 
 - flask cli will automatically read the .flaskenv file if python-dotnet is installed and add source it.
-`flask db init`
+`dotenv run flask db init`
 - making the migrations and upgrading the db
-`flask db migrate`
-`flask db upgrade`
+`dotenv run flask db migrate`
+`dotenv run flask db upgrade`
 
 ### Spacy:
 
