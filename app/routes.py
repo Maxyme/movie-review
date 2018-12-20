@@ -60,7 +60,7 @@ async def ents_from_url(url):
         except aiohttp.ClientError as error:
             return {"error": f"Unable to get URL: {error}"}
 
-    html = response.decode()
+    html = response.decode("utf-8", 'ignore')
 
     # Note, this works for hyperloop with asyncio or uvloop worker but not trio
     loop = get_event_loop()
