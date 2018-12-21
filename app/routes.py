@@ -1,14 +1,14 @@
 import concurrent
 import json
-import operator
+import os
 from asyncio import get_event_loop
 from urllib.parse import urlparse
 
 import aiohttp
 from aiocache import cached
 from gino import Gino
-from quart import Blueprint, websocket
-from quart import render_template, request
+from quart import Blueprint, websocket, redirect
+from quart import request
 from quart_cors import cors
 
 from app import app
@@ -23,9 +23,10 @@ db = Gino(app)
 
 
 @simple_app.route('/index')
-@simple_app.route('/', methods=['GET', 'POST'])
+@simple_app.route('/', methods=['GET'])
 async def index():
-    return await render_template('index.html')
+    frontend = os.getenv('FRONTEND_URL')
+    return redirect(frontend)
 
 
 @simple_app.route('/getcounts', methods=['POST'])

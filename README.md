@@ -57,8 +57,6 @@ https://movie-review-pro.herokuapp.com/
 `heroku addons:create heroku-postgresql:hobby-dev --app movie-review-staging`
 - adding a redis instance:
 `heroku addons:create redistogo:nano --app movie-review-staging`
-- adding a memcache:
-`heroku addons:create memcachier:dev --app movie-review-staging`
 - run the migrations on heroku:  
 `heroku run "cd app && flask db upgrade" --app movie-review-staging`
 - run locally with environment file (loads the heroku.sh file)
