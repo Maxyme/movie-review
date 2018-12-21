@@ -44,7 +44,7 @@ async def get_counts():
     # save the results - just for show, much faster to return directly, maybe make a new route?
     result = await Result.create(url=url, entities=top_10_entities)
 
-    return json.dumps(entities)
+    return json.dumps(top_10_entities)
 
 
 @cached(ttl=600)

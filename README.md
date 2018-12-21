@@ -15,9 +15,9 @@ https://movie-review-pro.herokuapp.com/
 ## running the backend
 
 - run: `pipenv shell`
-- run: `dotenv run quart run` and in a separate terminal `dotenv run python worker.py`.
-- the environment variables from .env will be sourced automatically by flask-cli and dotenv.
-- Hypercorn can also be used: `dotenv run hypercorn -b 127.0.0.1:${PORT} "app:create_app()"`
+- run: `dotenv run "quart run --host 127.0.0.1 --port 5000"`.
+- the environment variables from .env will be sourced automatically dotenv.
+- Hypercorn can also be used: `dotenv run hypercorn -b 127.0.0.1:5000 app:app`
 
 ### setting up heroku (do twice for staging)
 
