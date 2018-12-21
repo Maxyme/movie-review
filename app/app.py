@@ -9,8 +9,8 @@ app = Quart(__name__)
 # load config
 app.config.from_pyfile('settings.py')
 
-# setting this for now, because current quart-cors extension has an issue with * (default value!)
-app = cors(app, allow_headers=['content-type'])
+# set cors
+app = cors(app)
 
 # set the database handler
 db = Gino(app)

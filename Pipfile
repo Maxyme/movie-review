@@ -20,8 +20,8 @@ asks = "*"
 curio = "*"
 aiohttp = "*"
 aiocache = "*"
-quart-cors = "*"
 quart-trio = "*"
+quart-cors = "*"
 
 [dev-packages]
 python-dotenv = {extras = ["cli"],version = "*"}
