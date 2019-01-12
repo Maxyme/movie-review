@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "bc7f834930bc615f1ecf0143fe7b768593bc0429e89badabb91a8541e2218a0e"
+            "sha256": "02378a827e3557f65479b379c07ce7677cb48d7ec78988de7013b96f7482afea"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.7"
+            "python_version": "3.7.2"
         },
         "sources": [
             {
@@ -71,20 +71,6 @@
                 "sha256:e9ffdece0eece55f4108b14b6b0f29ffc730d58e28446a434fe41a1cc5c5f266"
             ],
             "version": "==1.0.5"
-        },
-        "asks": {
-            "hashes": [
-                "sha256:1679e5bd1dfa6c5d2220bdf2b8921c9c0d063d08370a7c66b9e167113681406f"
-            ],
-            "index": "pypi",
-            "version": "==2.2.0"
-        },
-        "async-generator": {
-            "hashes": [
-                "sha256:01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b",
-                "sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144"
-            ],
-            "version": "==1.10"
         },
         "async-timeout": {
             "hashes": [
@@ -156,13 +142,6 @@
                 "sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"
             ],
             "version": "==7.0"
-        },
-        "curio": {
-            "hashes": [
-                "sha256:51d1a7b49b4f8dd1486ac785c72d522962e93ccfdcfc1f818f5c7553a307b5ef"
-            ],
-            "index": "pypi",
-            "version": "==0.9"
         },
         "cymem": {
             "hashes": [
@@ -270,7 +249,6 @@
         },
         "hypercorn": {
             "extras": [
-                "trio",
                 "uvloop"
             ],
             "hashes": [
@@ -408,12 +386,6 @@
             ],
             "version": "==4.5.2"
         },
-        "multio": {
-            "hashes": [
-                "sha256:e8bce12aa8d2e076d96f4c4b6bfb70c01e0e0af9892f9ffc4ec868854e1b877e"
-            ],
-            "version": "==0.2.4"
-        },
         "murmurhash": {
             "hashes": [
                 "sha256:071f6369a65b835becdfe2d8ab02a4d05e83336a0bf3138dbf12a8f6967604ea",
@@ -474,13 +446,6 @@
                 "sha256:edfa6fba9157e0e3be0f40168eb142511012683ac3dc82420bee4a3f3981b30e"
             ],
             "version": "==1.15.4"
-        },
-        "outcome": {
-            "hashes": [
-                "sha256:7357af9ba2a08fdff8c742818909c5d146fc1fe75aee4bddadaa4f8ad726d262",
-                "sha256:9d58c05db36a900ce60c6da0167d76e28869f64b338d60fa3a61841cfa54ac71"
-            ],
-            "version": "==1.0.0"
         },
         "plac": {
             "hashes": [
@@ -588,14 +553,6 @@
             "index": "pypi",
             "version": "==0.1.1"
         },
-        "quart-trio": {
-            "hashes": [
-                "sha256:96d3e15832c3970008d70e6bc1317a5059e9b82eba63c37614a44c8619d7f4e9",
-                "sha256:fc77cbce48ad389add4780bbdf0912f1a0728b51fcbb24066fefa0cd55684fdd"
-            ],
-            "index": "pypi",
-            "version": "==0.1.0"
-        },
         "redis": {
             "hashes": [
                 "sha256:2100750629beff143b6a200a2ea8e719fcf26420adabb81402895e144c5083cf",
@@ -637,13 +594,6 @@
                 "sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
             ],
             "version": "==1.12.0"
-        },
-        "sniffio": {
-            "hashes": [
-                "sha256:2e9b81429e3b7c9e119fcee2673ee3be3229982adc68b3f59317863aba05ebb7",
-                "sha256:afb4997584a920e6e378a81ded2b3e71a696b85a68c4bfbe4dadf1ba57a9ef45"
-            ],
-            "version": "==1.0.0"
         },
         "sortedcontainers": {
             "hashes": [
@@ -714,12 +664,6 @@
                 "sha256:c9b9b5eeba13994a4c266aae7eef7aeeb0ba2973e431027e942b4faea139ef49"
             ],
             "version": "==4.29.1"
-        },
-        "trio": {
-            "hashes": [
-                "sha256:d323cc15f6406d15954af91e5e34af2001cc24163fdde29e3f88a227a1b53ab0"
-            ],
-            "version": "==0.10.0"
         },
         "typing-extensions": {
             "hashes": [
