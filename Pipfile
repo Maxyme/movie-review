@@ -8,7 +8,6 @@ quart = "*"
 flask = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
-gunicorn = "*"
 beautifulsoup4 = "*"
 psycopg2 = "*"
 gino = "*"
@@ -28,7 +27,7 @@ flake8 = "*"
 pytest = "*"
 
 [requires]
-python_version = "3.7.2"
+python_version = "3.7"
 
 [scripts]
 server = "cd app && flask run"

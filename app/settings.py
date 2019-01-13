@@ -14,5 +14,3 @@ CSRF_ENABLED = True
 
 # cors config - eval is used to pass a list here and not a string
 QUART_CORS_ALLOW_ORIGIN = eval(os.getenv('CORS_ALLOW_ORIGIN'))
-# setting this for now, because current quart-cors extension has an issue with * (default value!)
-QUART_CORS_ALLOW_HEADERS = ['content-type']
