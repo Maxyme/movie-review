@@ -20,7 +20,6 @@ aiocache = "*"
 quart-cors = "*"
 
 [dev-packages]
-python-dotenv = {extras = ["cli"],version = "*"}
 flake8 = "*"
 
 [test-packages]
