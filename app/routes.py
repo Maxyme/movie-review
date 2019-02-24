@@ -4,7 +4,8 @@ import os
 from asyncio import get_event_loop
 from urllib.parse import urlparse
 
-import aiohttp
+from aiohttp_requests import requests
+
 from aiocache import cached
 from gino import Gino
 from quart import Blueprint, websocket, redirect
@@ -50,17 +51,7 @@ async def get_counts():
 
 @cached(ttl=600)
 async def ents_from_url(url):
-    # todo: it would be great to replace this with asks and pass the quart loop.
-    # Update, it works with quart-trio, but not gino, which relies on asyncio...
-    # response = await asks.get(url)
-
-    async with aiohttp.ClientSession() as session:
-        try:
-            async with session.get(url) as s:
-                response = await s.read()
-        except aiohttp.ClientError as error:
-            return {"error": f"Unable to get URL: {error}"}
-
+    response = await requests.get(url)
     html = response.decode("utf-8", 'ignore')
 
     # Note, this works for hyperloop with asyncio or uvloop worker but not trio

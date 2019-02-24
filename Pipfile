@@ -18,6 +18,7 @@ redis = "*"
 aiohttp = "*"
 aiocache = "*"
 quart-cors = "*"
+aiohttp-requests = "*"
 
 [dev-packages]
 flake8 = "*"
