@@ -19,6 +19,7 @@ aiohttp = "*"
 aiocache = "*"
 quart-cors = "*"
 aiohttp-requests = "*"
+asyncpg = "*"
 
 [dev-packages]
 flake8 = "*"
