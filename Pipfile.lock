@@ -18,11 +18,11 @@
     "default": {
         "aiocache": {
             "hashes": [
-                "sha256:0e95a86d092e6c440e786cfac7b560d215dd712cdafe82ddce376050ca758763",
-                "sha256:11eaef6c1746d21ecc8ad551c6140f3b10d9ec1900d6b5bb42ccfc885dafc7a1"
+                "sha256:e55c7caaa5753794fd301c3a2e592737fa1d036db9f8d04ae154facdfb48a157",
+                "sha256:f2ebe0b05cec45782e7b5ea0bb74640f157dd4bb1028b4565364dda9fe33be7f"
             ],
             "index": "pypi",
-            "version": "==0.10.1"
+            "version": "==0.11.1"
         },
         "aiocontextvars": {
             "hashes": [
