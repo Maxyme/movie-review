@@ -320,11 +320,11 @@
                 "uvloop"
             ],
             "hashes": [
-                "sha256:97bad5887ff543e2dff0a584d1a084e702789a26df5c8fb027ac1efab32274c5",
-                "sha256:b90799a1bc84f00ee999071e259f194087881b85c7240994ba9d86c4ceff3305"
+                "sha256:110f534cb98131ed5c21cc3896772fc46597f67295116022ef5c1ef9bd180d4e",
+                "sha256:f3ab33ee77d3ea68bf75a94ca5633a5a01134aedf1a6c9d05a70339022d6c8a3"
             ],
             "index": "pypi",
-            "version": "==0.5.3"
+            "version": "==0.7.2"
         },
         "hyperframe": {
             "hashes": [
@@ -582,13 +582,6 @@
             ],
             "version": "==1.0.4"
         },
-        "pytoml": {
-            "hashes": [
-                "sha256:57a21e6347049f73bfb62011ff34cd72774c031b9828cb628a752225136dfc33",
-                "sha256:8eecf7c8d0adcff3b375b09fe403407aa9b645c499e5ab8cac670ac4a35f61e7"
-            ],
-            "version": "==0.1.21"
-        },
         "quart": {
             "hashes": [
                 "sha256:4df12c7909e25e5d7adeab936a173efb4e7ff3da7a907004f3234d3e8350c0c4",
@@ -698,6 +691,13 @@
                 "sha256:f27e0fe9b1e4be2eb0ff95112a9cbcd79e1614d25b8bae6f2e8e2b727c2a2fe6"
             ],
             "version": "==7.0.8"
+        },
+        "toml": {
+            "hashes": [
+                "sha256:229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c",
+                "sha256:235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e"
+            ],
+            "version": "==0.10.0"
         },
         "tqdm": {
             "hashes": [
