@@ -26,10 +26,10 @@
         },
         "aiocontextvars": {
             "hashes": [
-                "sha256:1e0ff5837c8b01c36a1107acdd0baf7853ebdf6c9fc43e8e311f4be37ac2038a",
-                "sha256:6ff7aee14f549d52f0446cbb84d0deddcd3fc677bcf8fbc2ce13f5756d2064dc"
+                "sha256:885daf8261818767d8f7cbd79f9d4482d118f024b6586ef6e67980236a27bfa3",
+                "sha256:f027372dc48641f683c559f247bd84962becaacdc9ba711d583c3871fb5652aa"
             ],
-            "version": "==0.2.1"
+            "version": "==0.2.2"
         },
         "aiodns": {
             "hashes": [
@@ -282,11 +282,11 @@
         },
         "gino": {
             "hashes": [
-                "sha256:3471e2f5b44f787eff3381d47e3e252ba184749ba2747adca06658d56272e912",
-                "sha256:741cc5b96fbf8d7f62a8ce37efc14204ab67a17efa78c38b34f74fcc8155b4b2"
+                "sha256:187492619c347df41fdbc876b058b85e77f7c50739d552ad720ff439d3d83753",
+                "sha256:3aebbe8776efefa49b878f00b48d6ad483b0f4ebcd8630641ea7c3c9f63bb260"
             ],
             "index": "pypi",
-            "version": "==0.8.1"
+            "version": "==0.8.3"
         },
         "h11": {
             "hashes": [
