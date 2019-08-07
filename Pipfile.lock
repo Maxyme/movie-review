@@ -620,11 +620,11 @@
         },
         "quart-cors": {
             "hashes": [
-                "sha256:054a5c9dc5c6a44a11af20f803037f92515a8086f388fda0e9a7a9f6ee4f3b7b",
-                "sha256:b38e88224c7fc2bd116d30ee41f13fdc4d480a8873ea0f97adb4498dd94baf44"
+                "sha256:3b9e7fee3b564249c9264677c45417f3cdba2531db3b3d2b2b863bde75a34297",
+                "sha256:b45367f4b4b198bfb2884038a6ab14f7ea82fbb03ce7def7233dfd5d2a8220cd"
             ],
             "index": "pypi",
-            "version": "==0.1.2"
+            "version": "==0.2.0"
         },
         "redis": {
             "hashes": [
